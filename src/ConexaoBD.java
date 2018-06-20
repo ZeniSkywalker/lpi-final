@@ -23,9 +23,10 @@ public class ConexaoBD {
     }
 
     public Connection conectar() throws SQLException {
-        String servidor = "localhost";
+        String servidor = "localhost"; //se der erro use 127.0.0.1
         String porta = "3306";
-        String database = "projeto";
+        String database = "projeto"; //aqui você deveria mudar para o nome agencia ou um outro nome para a sua database, projeto seria uma tabela dentro da database
+        //String database = "agencia";
         String usuario = "root";
         String senha = "root";
         return DriverManager
