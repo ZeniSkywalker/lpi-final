@@ -1,5 +1,9 @@
 
 import java.util.Date;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -12,7 +16,7 @@ import java.util.Date;
  */
 public class Projeto {
 
-    private Int idProjeto;
+    private int idProjeto;
     private String titulo;
     private double orcamento;
     private int duracao;
@@ -22,7 +26,7 @@ public class Projeto {
     private Date dataResposta;
     private String resultado;
 
-    public Projeto(Int idProjeto, String titulo, double orcamento, int duracao, String instituicao, Date dataEnvio, AreaDePesquisa areaDePesquisa) {
+    public Projeto(int idProjeto, String titulo, double orcamento, int duracao, String instituicao, Date dataEnvio, AreaDePesquisa areaDePesquisa) {
         this.idProjeto = idProjeto;
         this.titulo = titulo;
         this.orcamento = orcamento;
@@ -34,7 +38,7 @@ public class Projeto {
         this.areaDePesquisa = areaDePesquisa;
     }
 
-    public Int getIdProjeto() {
+    public int getIdProjeto() {
         return idProjeto;
     }
 
@@ -70,7 +74,7 @@ public class Projeto {
         return areaDePesquisa;
     }
 
-    public void setIdProjeto(Int idProjeto) {
+    public void setIdProjeto(int idProjeto) {
         this.idProjeto = idProjeto;
     }
 

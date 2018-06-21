@@ -16,6 +16,7 @@ import java.sql.SQLException;
  */
 public class Pessoa {
 
+    private int idPesquisador;
     private String cpf;
     private String rg;
     private String nome;
@@ -26,7 +27,8 @@ public class Pessoa {
     private AreaDePesquisa areaDePesquisa;
     private Projeto projeto;
 
-    public Pessoa(String cpf, String rg, String nome, String sexo, Date dataDeNascimento, String grauAcademico, String instituicao, AreaDePesquisa areaDePesquisa) {
+    public Pessoa(int idPesquisador, String cpf, String rg, String nome, String sexo, Date dataDeNascimento, String grauAcademico, String instituicao, AreaDePesquisa areaDePesquisa) {
+        this.idPesquisador;
         this.cpf = cpf;
         this.rg = rg;
         this.nome = nome;
@@ -36,6 +38,10 @@ public class Pessoa {
         this.instituicao = instituicao;
         this.areaDePesquisa = areaDePesquisa;
         this.projeto = projeto;
+    }
+
+    public Int getIdPesquisador() {
+        return idPesquisador;
     }
 
     public String getCpf() {
@@ -72,6 +78,10 @@ public class Pessoa {
 
     public Projeto getProjeto() {
         return projeto;
+    }
+
+    public void setIdPesquisador(int idPesquisador) {
+        this.idPesquisador = idPesquisador;
     }
 
     public void setCpf(String cpf) {
@@ -191,7 +201,7 @@ public class Pessoa {
             rs = stm.executeQuery();
             if (rs.next()) {
                 this.setNome(rs.getString(1));
-                this.setCpf(rs.getInt(2));
+                this.setCpf(rs.getString(2));
             }
         } catch (Exception e) {
             e.printStackTrace();
