@@ -12,7 +12,8 @@ import java.util.Date;
  */
 public class Projeto {
 
-    private String nome;
+    private Int idProjeto;
+    private String titulo;
     private double orcamento;
     private int duracao;
     private String instituicao;
@@ -21,8 +22,9 @@ public class Projeto {
     private Date dataResposta;
     private String resultado;
 
-    public Projeto(String nome, double orcamento, int duracao, String instituicao, Date dataEnvio, AreaDePesquisa areaDePesquisa) {
-        this.nome = nome;
+    public Projeto(Int idProjeto, String titulo, double orcamento, int duracao, String instituicao, Date dataEnvio, AreaDePesquisa areaDePesquisa) {
+        this.idProjeto = idProjeto;
+        this.titulo = titulo;
         this.orcamento = orcamento;
         this.duracao = duracao;
         this.instituicao = instituicao;
@@ -32,8 +34,12 @@ public class Projeto {
         this.areaDePesquisa = areaDePesquisa;
     }
 
-    public String getNome() {
-        return nome;
+    public Int getIdProjeto() {
+        return idProjeto;
+    }
+
+    public String getTitulo() {
+        return titulo;
     }
 
     public double getOrcamento() {
@@ -64,8 +70,20 @@ public class Projeto {
         return areaDePesquisa;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setIdProjeto(Int idProjeto) {
+        this.idProjeto = idProjeto;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public void setDuracao(int duracao) {
+        this.duracao = duracao;
+    }
+
+    public void setResultado(String resultado) {
+        this.resultado = resultado;
     }
 
     public void setOrcamento(double orcamento) {
@@ -87,4 +105,96 @@ public class Projeto {
     public void setAreaDePesquisa(AreaDePesquisa areaDePesquisa) {
         this.areaDePesquisa = areaDePesquisa;
     }
+    
+    
+    public void incluir(Connection conn) {
+        String sqlInsert
+                = "INSERT INTO projeto (idProjeto, titulo, orcamento, duracao, instituicao, area_de_pesquisa, data_envio, resutado) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        PreparedStatement stm = null;
+        try {
+            stm = conn.prepareStatement(sqlInsert);
+            stm.setInt(1, getIdProjeto());
+            stm.setString(2, getTitulo());
+            stm.setDouble(3, getOrcamento());
+            stm.setInt(4, getDuracao());
+            stm.setString(5, getInstituicao());
+            stm.setString(6, getAreaDePesquisa());
+            stm.setDate(7, getDataEnvio());
+            stm.setString(8, getResultado());
+            stm.execute();
+        } catch (Exception e) {
+            e.printStackTrace();
+            try {
+                conn.rollback();
+            } catch (SQLException e1) {
+                System.out.print(e1.getStackTrace());
+            }
+        }
+    }
+
+    public void excluir(Connection conn) {
+        String sqlDelete = "DELETE FROM projeto WHERE idProjeto = ?";
+        PreparedStatement stm = null;
+        try {
+            stm = conn.prepareStatement(sqlDelete);
+            stm.setInt(1, getIdProjeto());
+            stm.execute();
+        } catch (Exception e) {
+            e.printStackTrace();
+            try {
+                conn.rollback();
+            } catch (SQLException e1) {
+                System.out.print(e1.getStackTrace());
+            }
+        }
+    }
+
+    public void atualizar(Connection conn) {
+        String sqlUpdate
+                    = "UPDATE Projeto SET titulo = ?, orcamento = ?, duracao = ?, instituicao = ?, area_de_pesquisa = ?, data_envio= ?, resultado = ? WHERE IdProjeto = ?";
+        PreparedStatement stm = null;
+        try {
+            stm.setInt(1, getIdProjeto());
+            stm.setString(2, getTitulo());
+            stm.setDouble(3, getOrcamento());
+            stm.setInt(4, getDuracao());
+            stm.setString(5, getInstituicao());
+            stm.setString(6, getAreaDePesquisa());
+            stm.setDate(7, getDataEnvio());
+            stm.setString(8, getResultado());
+            stm.execute();
+        } catch (Exception e) {
+            e.printStackTrace();
+            try {
+                conn.rollback();
+            } catch (SQLException e1) {
+                System.out.print(e1.getStackTrace());
+            }
+        }
+    }
+
+    public void carregar(Connection conn) {
+        String sqlSelect
+                = "SELECT titulo FROM Projeto WHERE idProjeto = ?";
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+        try {
+            stm = conn.prepareStatement(sqlSelect);
+            stm.setInt(1, getIdProjeto());
+            rs = stm.executeQuery();
+            if (rs.next()) {
+                this.setTitulo(rs.getString(1));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            try {
+                conn.rollback();
+            } catch (SQLException e1) {
+                System.out.print(e1.getStackTrace());
+            }
+        }
+
+    }
+    
+    
 }

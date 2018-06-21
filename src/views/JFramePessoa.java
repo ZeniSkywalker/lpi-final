@@ -48,6 +48,8 @@ public class JFramePessoa extends javax.swing.JFrame {
         projetoTxt = new javax.swing.JTextField();
         voltarBtn = new javax.swing.JButton();
         cadastrarBtn = new javax.swing.JButton();
+        avaliadorBtn = new javax.swing.JRadioButton();
+        pesquisadorBtn = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -125,26 +127,35 @@ public class JFramePessoa extends javax.swing.JFrame {
 
         cadastrarBtn.setText("Cadastrar");
 
+        avaliadorBtn.setText("Avaliador");
+
+        pesquisadorBtn.setText("Pesquisador");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(nomeLbl)
-                    .addComponent(projetoLbl)
-                    .addComponent(areaPesqLbl)
-                    .addComponent(instituicaoLbl)
-                    .addComponent(grauAcadLbl)
-                    .addComponent(dataNascLbl)
-                    .addComponent(sexoLbl)
-                    .addComponent(rgLbl)
-                    .addComponent(cpfLbl)
-                    .addComponent(voltarBtn))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(40, 40, 40)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(nomeLbl)
+                            .addComponent(projetoLbl)
+                            .addComponent(areaPesqLbl)
+                            .addComponent(instituicaoLbl)
+                            .addComponent(grauAcadLbl)
+                            .addComponent(dataNascLbl)
+                            .addComponent(sexoLbl)
+                            .addComponent(rgLbl)
+                            .addComponent(cpfLbl))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(voltarBtn)
+                        .addGap(7, 7, 7)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(nomeTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)
                             .addComponent(cpfTxt)
@@ -156,15 +167,23 @@ public class JFramePessoa extends javax.swing.JFrame {
                             .addComponent(projetoTxt)
                             .addComponent(areaPesqCbx, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(40, 40, 40))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(cadastrarBtn)
-                        .addContainerGap(145, Short.MAX_VALUE))))
+                        .addGap(98, 98, 98))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(avaliadorBtn)
+                .addGap(40, 40, 40)
+                .addComponent(pesquisadorBtn)
+                .addGap(107, 107, 107))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(avaliadorBtn)
+                    .addComponent(pesquisadorBtn))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nomeLbl)
                     .addComponent(nomeTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -266,6 +285,7 @@ public class JFramePessoa extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> areaPesqCbx;
     private javax.swing.JLabel areaPesqLbl;
+    private javax.swing.JRadioButton avaliadorBtn;
     private javax.swing.JButton cadastrarBtn;
     private javax.swing.JLabel cpfLbl;
     private javax.swing.JTextField cpfTxt;
@@ -277,6 +297,7 @@ public class JFramePessoa extends javax.swing.JFrame {
     private javax.swing.JTextField instituicaoTxt;
     private javax.swing.JLabel nomeLbl;
     private javax.swing.JTextField nomeTxt;
+    private javax.swing.JRadioButton pesquisadorBtn;
     private javax.swing.JLabel projetoLbl;
     private javax.swing.JTextField projetoTxt;
     private javax.swing.JLabel rgLbl;

@@ -1,5 +1,9 @@
 
 import java.util.Date;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -65,10 +69,11 @@ public class Pessoa {
     public AreaDePesquisa getAreaDePesquisa() {
         return areaDePesquisa;
     }
- 
+
     public Projeto getProjeto() {
         return projeto;
     }
+
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
@@ -100,8 +105,102 @@ public class Pessoa {
     public void setAreaDePesquisa(AreaDePesquisa areaDePesquisa) {
         this.areaDePesquisa = areaDePesquisa;
     }
-    
+
     public void setProjeto(Projeto projeto) {
         this.projeto = projeto;
+    }
+
+    public void incluir(Connection conn) {
+        String sqlInsert
+                = "INSERT INTO pesquisador (idPesquisador, cpf, rg, nome, sexo, data_nascimento, grau_academico, instituicao, area_de_pesquisa, projeto) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        PreparedStatement stm = null;
+        try {
+            stm = conn.prepareStatement(sqlInsert);
+            stm.setInt(1, getIdPesquisador());
+            stm.setString(2, getCpf());
+            stm.setString(3, getRg());
+            stm.setString(4, getNome());
+            stm.setString(5, getSexo());
+            stm.setDate(6, getDataDeNascimento());
+            stm.setString(7, getGrauAcademico());
+            stm.setString(8, getInstituicao());
+            stm.setString(9, getAreaDePesquisa());
+            stm.setString(10, getProjeto());
+            stm.execute();
+        } catch (Exception e) {
+            e.printStackTrace();
+            try {
+                conn.rollback();
+            } catch (SQLException e1) {
+                System.out.print(e1.getStackTrace());
+            }
+        }
+    }
+
+    public void excluir(Connection conn) {
+        String sqlDelete = "DELETE FROM pesquisador WHERE idPesquisador = ?";
+        PreparedStatement stm = null;
+        try {
+            stm = conn.prepareStatement(sqlDelete);
+            stm.setInt(1, getIdPesquisador());
+            stm.execute();
+        } catch (Exception e) {
+            e.printStackTrace();
+            try {
+                conn.rollback();
+            } catch (SQLException e1) {
+                System.out.print(e1.getStackTrace());
+            }
+        }
+    }
+
+    public void atualizar(Connection conn) {
+        String sqlUpdate
+                = "UPDATE Pesquisador SET cpf = ?, rg = ?, nome = ?, sexo = ?, data_nascimento = ?, grau_academico = ?, instituicao = ?, area_de_pesquisa = ?, projeto = ?   WHERE IdPesquisador = ?";
+        PreparedStatement stm = null;
+        try {
+            stm.setInt(1, getIdPesquisador());
+            stm.setString(2, getCpf());
+            stm.setString(3, getRg());
+            stm.setString(4, getNome());
+            stm.setString(5, getSexo());
+            stm.setDate(6, getDataDeNascimento());
+            stm.setString(7, getGrauAcademico());
+            stm.setString(8, getInstituicao());
+            stm.setString(9, getAreaDePesquisa());
+            stm.setString(10, getProjeto());
+            stm.execute();
+        } catch (Exception e) {
+            e.printStackTrace();
+            try {
+                conn.rollback();
+            } catch (SQLException e1) {
+                System.out.print(e1.getStackTrace());
+            }
+        }
+    }
+
+    public void carregar(Connection conn) {
+        String sqlSelect
+                = "SELECT nome, Cpf FROM Pesquisador WHERE idPesquisador = ?";
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+        try {
+            stm = conn.prepareStatement(sqlSelect);
+            stm.setInt(1, getIdPesquidor());
+            rs = stm.executeQuery();
+            if (rs.next()) {
+                this.setNome(rs.getString(1));
+                this.setCpf(rs.getInt(2));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            try {
+                conn.rollback();
+            } catch (SQLException e1) {
+                System.out.print(e1.getStackTrace());
+            }
+        }
+
     }
 }
