@@ -22,7 +22,7 @@ public class JFramePessoa extends javax.swing.JFrame {
 
     Connection conn = null;
     ConexaoBD conect;
-    PreparedStatement stm = null;
+    PreparedStatement stm;
     SimpleDateFormat dateFormat = new SimpleDateFormat("dd/mm/yyyy");
 
     /**
