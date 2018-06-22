@@ -1,4 +1,7 @@
+package classes;
 
+
+import classes.AreaDePesquisa;
 import java.util.Date;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -28,7 +31,7 @@ public class Pessoa {
     private Projeto projeto;
 
     public Pessoa(int idPesquisador, String cpf, String rg, String nome, String sexo, Date dataDeNascimento, String grauAcademico, String instituicao, AreaDePesquisa areaDePesquisa) {
-        this.idPesquisador;
+        this.idPesquisador = idPesquisador;
         this.cpf = cpf;
         this.rg = rg;
         this.nome = nome;
@@ -40,7 +43,10 @@ public class Pessoa {
         this.projeto = projeto;
     }
 
-    public Int getIdPesquisador() {
+    public Pessoa() {
+    }
+
+    public int getIdPesquisador() {
         return idPesquisador;
     }
 
@@ -120,9 +126,9 @@ public class Pessoa {
         this.projeto = projeto;
     }
 
-    public void incluir(Connection conn) {
+    public void incluirPesquisador(Connection conn) {
         String sqlInsert
-                = "INSERT INTO pesquisador (idPesquisador, cpf, rg, nome, sexo, data_nascimento, grau_academico, instituicao, area_de_pesquisa, projeto) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                = "INSERT INTO pesquisador (id_pesquisador, cpf, rg, nome, sexo, data_nascimento, grau_academico, instituicao, area_de_pesquisa, projeto) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement stm = null;
         try {
             stm = conn.prepareStatement(sqlInsert);
@@ -147,6 +153,34 @@ public class Pessoa {
         }
     }
 
+    public void incluirAvaliador(Connection conn) {
+        String sqlInsert
+                = "INSERT INTO avaliador (id_avaliador, cpf, rg, nome, sexo, data_nascimento, grau_academico, instituicao, area_de_pesquisa, projeto) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        PreparedStatement stm = null;
+        try {
+            stm = conn.prepareStatement(sqlInsert);
+            stm.setInt(1, getIdPesquisador());
+            stm.setString(2, getCpf());
+            stm.setString(3, getRg());
+            stm.setString(4, getNome());
+            stm.setString(5, getSexo());
+            stm.setDate(6, getDataDeNascimento());
+            stm.setString(7, getGrauAcademico());
+            stm.setString(8, getInstituicao());
+            stm.setString(9, getAreaDePesquisa());
+            stm.setString(10, getProjeto());
+            stm.execute();
+        } catch (Exception e) {
+            e.printStackTrace();
+            try {
+                conn.rollback();
+            } catch (SQLException e1) {
+                System.out.print(e1.getStackTrace());
+            }
+        }
+    }
+
+    
     public void excluir(Connection conn) {
         String sqlDelete = "DELETE FROM pesquisador WHERE idPesquisador = ?";
         PreparedStatement stm = null;
@@ -197,7 +231,7 @@ public class Pessoa {
         ResultSet rs = null;
         try {
             stm = conn.prepareStatement(sqlSelect);
-            stm.setInt(1, getIdPesquidor());
+            stm.setInt(1, getIdPesquisador());
             rs = stm.executeQuery();
             if (rs.next()) {
                 this.setNome(rs.getString(1));

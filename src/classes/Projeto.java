@@ -1,4 +1,7 @@
+package classes;
 
+
+import classes.AreaDePesquisa;
 import java.util.Date;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -109,8 +112,7 @@ public class Projeto {
     public void setAreaDePesquisa(AreaDePesquisa areaDePesquisa) {
         this.areaDePesquisa = areaDePesquisa;
     }
-    
-    
+
     public void incluir(Connection conn) {
         String sqlInsert
                 = "INSERT INTO projeto (idProjeto, titulo, orcamento, duracao, instituicao, area_de_pesquisa, data_envio, resutado) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
@@ -155,7 +157,7 @@ public class Projeto {
 
     public void atualizar(Connection conn) {
         String sqlUpdate
-                    = "UPDATE Projeto SET titulo = ?, orcamento = ?, duracao = ?, instituicao = ?, area_de_pesquisa = ?, data_envio= ?, resultado = ? WHERE IdProjeto = ?";
+                = "UPDATE projeto SET titulo = ?, orcamento = ?, duracao = ?, instituicao = ?, area_de_pesquisa = ?, data_envio= ?, resultado = ? WHERE IdProjeto = ?";
         PreparedStatement stm = null;
         try {
             stm.setInt(1, getIdProjeto());
@@ -179,7 +181,7 @@ public class Projeto {
 
     public void carregar(Connection conn) {
         String sqlSelect
-                = "SELECT titulo FROM Projeto WHERE idProjeto = ?";
+                = "SELECT titulo FROM projeto WHERE idProjeto = ?";
         PreparedStatement stm = null;
         ResultSet rs = null;
         try {
@@ -199,6 +201,5 @@ public class Projeto {
         }
 
     }
-    
-    
+
 }

@@ -1,3 +1,5 @@
+package classes;
+
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -41,7 +43,7 @@ public class GrandeAreaConhecimento {
 
     public void incluir(Connection conn) {
         String sqlInsert
-                = "INSERT INTO grande_are_conhecimento (idGdArea, nome) VALUES (?, ?)";
+                = "INSERT INTO grande_area_conhecimento (idGdArea, nome) VALUES (?, ?)";
         PreparedStatement stm = null;
         try {
             stm = conn.prepareStatement(sqlInsert);

@@ -5,17 +5,26 @@
  */
 package views;
 
+import classes.ConexaoBD;
+import classes.Pessoa;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Luiza
  */
 public class JFramePessoa extends javax.swing.JFrame {
-
+    
+    Connection conn;
     /**
      * Creates new form JFramePessoa
      */
     public JFramePessoa() {
         initComponents();
+        
     }
 
     /**
@@ -35,17 +44,13 @@ public class JFramePessoa extends javax.swing.JFrame {
         dataNascLbl = new javax.swing.JLabel();
         grauAcadLbl = new javax.swing.JLabel();
         instituicaoLbl = new javax.swing.JLabel();
-        areaPesqLbl = new javax.swing.JLabel();
-        projetoLbl = new javax.swing.JLabel();
         nomeTxt = new javax.swing.JTextField();
         cpfTxt = new javax.swing.JTextField();
         rgTxt = new javax.swing.JTextField();
         sexoTxt = new javax.swing.JTextField();
         dataNascTxt = new javax.swing.JTextField();
         grauAcadTxt = new javax.swing.JTextField();
-        areaPesqCbx = new javax.swing.JComboBox<>();
         instituicaoTxt = new javax.swing.JTextField();
-        projetoTxt = new javax.swing.JTextField();
         voltarBtn = new javax.swing.JButton();
         cadastrarBtn = new javax.swing.JButton();
         avaliadorBtn = new javax.swing.JRadioButton();
@@ -66,10 +71,6 @@ public class JFramePessoa extends javax.swing.JFrame {
         grauAcadLbl.setText("Grau Academico:");
 
         instituicaoLbl.setText("Instituição:");
-
-        areaPesqLbl.setText("Area de Pesquisa:");
-
-        projetoLbl.setText("Projeto:");
 
         org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, nomeLbl, org.jdesktop.beansbinding.ObjectProperty.create(), nomeTxt, org.jdesktop.beansbinding.BeanProperty.create("text"), "nomeTxt");
         bindingGroup.addBinding(binding);
@@ -101,21 +102,7 @@ public class JFramePessoa extends javax.swing.JFrame {
             }
         });
 
-        areaPesqCbx.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, areaPesqCbx, org.jdesktop.beansbinding.ObjectProperty.create(), areaPesqCbx, org.jdesktop.beansbinding.BeanProperty.create("elements"), "areasPesquisaCbx");
-        bindingGroup.addBinding(binding);
-
-        areaPesqCbx.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                areaPesqCbxActionPerformed(evt);
-            }
-        });
-
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, instituicaoLbl, org.jdesktop.beansbinding.ObjectProperty.create(), instituicaoTxt, org.jdesktop.beansbinding.BeanProperty.create("text"), "instituicaoTxt");
-        bindingGroup.addBinding(binding);
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, projetoTxt, org.jdesktop.beansbinding.ObjectProperty.create(), projetoTxt, org.jdesktop.beansbinding.BeanProperty.create("text"), "projetoTxt");
         bindingGroup.addBinding(binding);
 
         voltarBtn.setText("Voltar");
@@ -126,8 +113,16 @@ public class JFramePessoa extends javax.swing.JFrame {
         });
 
         cadastrarBtn.setText("Cadastrar");
+        cadastrarBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cadastrarBtnActionPerformed(evt);
+            }
+        });
 
         avaliadorBtn.setText("Avaliador");
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, pesquisadorBtn, org.jdesktop.beansbinding.ELProperty.create("${selected}"), avaliadorBtn, org.jdesktop.beansbinding.BeanProperty.create("selected"));
+        bindingGroup.addBinding(binding);
 
         pesquisadorBtn.setText("Pesquisador");
 
@@ -135,51 +130,43 @@ public class JFramePessoa extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(nomeLbl)
-                            .addComponent(projetoLbl)
-                            .addComponent(areaPesqLbl)
-                            .addComponent(instituicaoLbl)
-                            .addComponent(grauAcadLbl)
-                            .addComponent(dataNascLbl)
-                            .addComponent(sexoLbl)
-                            .addComponent(rgLbl)
-                            .addComponent(cpfLbl))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(voltarBtn)
-                        .addGap(7, 7, 7)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(nomeTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)
-                            .addComponent(cpfTxt)
-                            .addComponent(rgTxt)
-                            .addComponent(sexoTxt)
-                            .addComponent(dataNascTxt)
-                            .addComponent(grauAcadTxt)
-                            .addComponent(instituicaoTxt)
-                            .addComponent(projetoTxt)
-                            .addComponent(areaPesqCbx, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(40, 40, 40))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(cadastrarBtn)
-                        .addGap(98, 98, 98))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(voltarBtn)
+                .addGap(66, 66, 66)
+                .addComponent(cadastrarBtn)
+                .addGap(98, 98, 98))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(59, 59, 59)
                 .addComponent(avaliadorBtn)
                 .addGap(40, 40, 40)
                 .addComponent(pesquisadorBtn)
-                .addGap(107, 107, 107))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(nomeLbl)
+                    .addComponent(instituicaoLbl)
+                    .addComponent(grauAcadLbl)
+                    .addComponent(dataNascLbl)
+                    .addComponent(sexoLbl)
+                    .addComponent(rgLbl)
+                    .addComponent(cpfLbl))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(nomeTxt)
+                    .addComponent(cpfTxt)
+                    .addComponent(rgTxt)
+                    .addComponent(sexoTxt)
+                    .addComponent(dataNascTxt)
+                    .addComponent(grauAcadTxt)
+                    .addComponent(instituicaoTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(avaliadorBtn)
                     .addComponent(pesquisadorBtn))
@@ -211,19 +198,11 @@ public class JFramePessoa extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(instituicaoLbl)
                     .addComponent(instituicaoTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(areaPesqLbl)
-                    .addComponent(areaPesqCbx, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(projetoLbl)
-                    .addComponent(projetoTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(44, 44, 44)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(voltarBtn)
                     .addComponent(cadastrarBtn))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         bindingGroup.bind();
@@ -243,9 +222,37 @@ public class JFramePessoa extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_voltarBtnActionPerformed
 
-    private void areaPesqCbxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_areaPesqCbxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_areaPesqCbxActionPerformed
+    private void cadastrarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarBtnActionPerformed
+        ConexaoBD bd = new ConexaoBD();
+        try {
+           conn = bd.conectar();
+        } catch (SQLException ex) {
+            Logger.getLogger(JFramePessoa.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        if (pesquisadorBtn.isSelected()){
+            Pessoa pesquisador = new Pessoa();
+            pesquisador.setNome(nomeTxt.getText());
+            pesquisador.setCpf(cpfTxt.getText());
+            pesquisador.setRg(rgTxt.getText());
+            pesquisador.setSexo(sexoTxt.getText());
+            pesquisador.setDataDeNascimento(dataNascTxt.getText());
+            pesquisador.setGrauAcademico(grauAcadTxt.getText());
+            pesquisador.setInstituicao(instituicaoTxt.getText());
+            pesquisador.incluirPesquisador(conn);
+        }
+        else{
+            Pessoa avaliador = new Pessoa();
+            avaliador.setNome(nomeTxt.getText());
+            avaliador.setCpf(cpfTxt.getText());
+            avaliador.setRg(rgTxt.getText());
+            avaliador.setSexo(sexoTxt.getText());
+            avaliador.setDataDeNascimento(dataNascTxt.getText());
+            avaliador.setGrauAcademico(grauAcadTxt.getText());
+            avaliador.setInstituicao(instituicaoTxt.getText());
+            avaliador.incluirAvaliador(conn);
+        }
+    }//GEN-LAST:event_cadastrarBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -283,8 +290,6 @@ public class JFramePessoa extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> areaPesqCbx;
-    private javax.swing.JLabel areaPesqLbl;
     private javax.swing.JRadioButton avaliadorBtn;
     private javax.swing.JButton cadastrarBtn;
     private javax.swing.JLabel cpfLbl;
@@ -298,8 +303,6 @@ public class JFramePessoa extends javax.swing.JFrame {
     private javax.swing.JLabel nomeLbl;
     private javax.swing.JTextField nomeTxt;
     private javax.swing.JRadioButton pesquisadorBtn;
-    private javax.swing.JLabel projetoLbl;
-    private javax.swing.JTextField projetoTxt;
     private javax.swing.JLabel rgLbl;
     private javax.swing.JTextField rgTxt;
     private javax.swing.JLabel sexoLbl;

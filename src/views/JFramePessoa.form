@@ -23,62 +23,49 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="nomeLbl" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="projetoLbl" min="-2" max="-2" attributes="0"/>
-                          <Component id="areaPesqLbl" min="-2" max="-2" attributes="0"/>
-                          <Component id="instituicaoLbl" min="-2" max="-2" attributes="0"/>
-                          <Component id="grauAcadLbl" min="-2" max="-2" attributes="0"/>
-                          <Component id="dataNascLbl" min="-2" max="-2" attributes="0"/>
-                          <Component id="sexoLbl" min="-2" max="-2" attributes="0"/>
-                          <Component id="rgLbl" min="-2" max="-2" attributes="0"/>
-                          <Component id="cpfLbl" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace pref="15" max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="voltarBtn" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="nomeTxt" pref="221" max="32767" attributes="0"/>
-                          <Component id="cpfTxt" max="32767" attributes="0"/>
-                          <Component id="rgTxt" max="32767" attributes="0"/>
-                          <Component id="sexoTxt" max="32767" attributes="0"/>
-                          <Component id="dataNascTxt" max="32767" attributes="0"/>
-                          <Component id="grauAcadTxt" max="32767" attributes="0"/>
-                          <Component id="instituicaoTxt" alignment="0" max="32767" attributes="0"/>
-                          <Component id="projetoTxt" max="32767" attributes="0"/>
-                          <Component id="areaPesqCbx" alignment="0" max="32767" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <Component id="cadastrarBtn" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="98" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-          </Group>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
+              <Component id="voltarBtn" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
+              <Component id="cadastrarBtn" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="98" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
               <Component id="avaliadorBtn" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
               <Component id="pesquisadorBtn" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="107" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="nomeLbl" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="instituicaoLbl" min="-2" max="-2" attributes="0"/>
+                  <Component id="grauAcadLbl" min="-2" max="-2" attributes="0"/>
+                  <Component id="dataNascLbl" min="-2" max="-2" attributes="0"/>
+                  <Component id="sexoLbl" min="-2" max="-2" attributes="0"/>
+                  <Component id="rgLbl" min="-2" max="-2" attributes="0"/>
+                  <Component id="cpfLbl" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="71" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="nomeTxt" max="32767" attributes="0"/>
+                  <Component id="cpfTxt" max="32767" attributes="0"/>
+                  <Component id="rgTxt" max="32767" attributes="0"/>
+                  <Component id="sexoTxt" max="32767" attributes="0"/>
+                  <Component id="dataNascTxt" max="32767" attributes="0"/>
+                  <Component id="grauAcadTxt" max="32767" attributes="0"/>
+                  <Component id="instituicaoTxt" alignment="0" min="-2" pref="221" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="avaliadorBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="pesquisadorBtn" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -118,22 +105,12 @@
                   <Component id="instituicaoLbl" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="instituicaoTxt" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="areaPesqLbl" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="areaPesqCbx" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="projetoLbl" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="projetoTxt" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
+              <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="voltarBtn" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="cadastrarBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cadastrarBtn" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="27" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -172,16 +149,6 @@
     <Component class="javax.swing.JLabel" name="instituicaoLbl">
       <Properties>
         <Property name="text" type="java.lang.String" value="Institui&#xe7;&#xe3;o:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="areaPesqLbl">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Area de Pesquisa:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="projetoLbl">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Projeto:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="nomeTxt">
@@ -238,42 +205,11 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="grauAcadTxtActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JComboBox" name="areaPesqCbx">
-      <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Item 1"/>
-            <StringItem index="1" value="Item 2"/>
-            <StringItem index="2" value="Item 3"/>
-            <StringItem index="3" value="Item 4"/>
-          </StringArray>
-        </Property>
-      </Properties>
-      <BindingProperties>
-        <BindingProperty name="elements" source="areaPesqCbx" target="areaPesqCbx" targetPath="elements" updateStrategy="0" immediately="false">
-          <Property name="name" type="java.lang.String" value="areasPesquisaCbx"/>
-        </BindingProperty>
-      </BindingProperties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="areaPesqCbxActionPerformed"/>
-      </Events>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-      </AuxValues>
-    </Component>
     <Component class="javax.swing.JTextField" name="instituicaoTxt">
       <BindingProperties>
         <BindingProperty name="text" source="instituicaoLbl" target="instituicaoTxt" targetPath="text" updateStrategy="0" immediately="false">
           <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
           <Property name="name" type="java.lang.String" value="instituicaoTxt"/>
-        </BindingProperty>
-      </BindingProperties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="projetoTxt">
-      <BindingProperties>
-        <BindingProperty name="text" source="projetoTxt" target="projetoTxt" targetPath="text" updateStrategy="0" immediately="false">
-          <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
-          <Property name="name" type="java.lang.String" value="projetoTxt"/>
         </BindingProperty>
       </BindingProperties>
     </Component>
@@ -289,11 +225,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Cadastrar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cadastrarBtnActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JRadioButton" name="avaliadorBtn">
       <Properties>
         <Property name="text" type="java.lang.String" value="Avaliador"/>
       </Properties>
+      <BindingProperties>
+        <BindingProperty name="selected" source="pesquisadorBtn" sourcePath="${selected}" target="avaliadorBtn" targetPath="selected" updateStrategy="0" immediately="false"/>
+      </BindingProperties>
     </Component>
     <Component class="javax.swing.JRadioButton" name="pesquisadorBtn">
       <Properties>
