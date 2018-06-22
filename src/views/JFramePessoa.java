@@ -60,7 +60,7 @@ public class JFramePessoa extends javax.swing.JFrame {
         cadastrarBtn = new javax.swing.JButton();
         avaliadorBtn = new javax.swing.JRadioButton();
         pesquisadorBtn = new javax.swing.JRadioButton();
-        dataNascTxt = new javax.swing.JFormattedTextField();
+        dataNascTxt = new javax.swing.JTextField(); //bug fdp
         excluirBtn = new javax.swing.JButton();
         carregarBtn = new javax.swing.JButton();
         atualizarBtn = new javax.swing.JButton();
@@ -127,9 +127,6 @@ public class JFramePessoa extends javax.swing.JFrame {
         bindingGroup.addBinding(binding);
 
         pesquisadorBtn.setText("Pesquisador");
-
-        dataNascTxt.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter()));
-
         excluirBtn.setText("Excluir");
         excluirBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -389,7 +386,7 @@ public class JFramePessoa extends javax.swing.JFrame {
     private javax.swing.JLabel cpfLbl;
     private javax.swing.JTextField cpfTxt;
     private javax.swing.JLabel dataNascLbl;
-    private javax.swing.JFormattedTextField dataNascTxt;
+    private javax.swing.JTextField dataNascTxt;
     private javax.swing.JButton excluirBtn;
     private javax.swing.JLabel grauAcadLbl;
     private javax.swing.JTextField grauAcadTxt;
