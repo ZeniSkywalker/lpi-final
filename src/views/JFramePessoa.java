@@ -253,7 +253,8 @@ public class JFramePessoa extends javax.swing.JFrame {
     }//GEN-LAST:event_grauAcadTxtActionPerformed
 
     private void voltarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarBtnActionPerformed
-        // TODO add your handling code here:
+        JFrameMenu abc = new JFrameMenu();
+        dispose();
     }//GEN-LAST:event_voltarBtnActionPerformed
 
     private void inserir()throws SQLException {//GEN-FIRST:event_cadastrarBtnActionPerformed
