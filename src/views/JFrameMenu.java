@@ -92,11 +92,11 @@ public class JFrameMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cadastroProjetoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastroProjetoBtnActionPerformed
-        // TODO add your handling code here:
+        JFrameProjeto projeto = new JFrameProjeto();
     }//GEN-LAST:event_cadastroProjetoBtnActionPerformed
 
     private void cadastroPessoaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastroPessoaBtnActionPerformed
-        // TODO add your handling code here:
+        JFramePessoa pessoa = new JFramePessoa(); 
     }//GEN-LAST:event_cadastroPessoaBtnActionPerformed
 
     /**
