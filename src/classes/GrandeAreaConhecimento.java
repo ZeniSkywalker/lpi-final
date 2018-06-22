@@ -1,6 +1,5 @@
 package classes;
 
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -75,8 +74,7 @@ public class GrandeAreaConhecimento {
                 System.out.print(e1.getStackTrace());
             }
         }
-        
-        
+    }   
 
     public void atualizar(Connection conn) {
         String sqlUpdate
@@ -96,7 +94,7 @@ public class GrandeAreaConhecimento {
         }
     }
 
-        public void carregar(Connection conn) {
+    public void carregar(Connection conn ) {
         String sqlSelect
                 = "SELECT nome FROM grande_area_conhecimento WHERE idGdArea = ?";
         PreparedStatement stm = null;

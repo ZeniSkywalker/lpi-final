@@ -1,8 +1,7 @@
 package classes;
 
 
-import classes.AreaDePesquisa;
-import java.util.Date;
+import java.sql.Date;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -24,12 +23,12 @@ public class Projeto {
     private double orcamento;
     private int duracao;
     private String instituicao;
-    private AreaDePesquisa areaDePesquisa;
+    private AreaDeConhecimento idArea;
     private Date dataEnvio;
     private Date dataResposta;
     private String resultado;
 
-    public Projeto(int idProjeto, String titulo, double orcamento, int duracao, String instituicao, Date dataEnvio, AreaDePesquisa areaDePesquisa) {
+    public Projeto(int idProjeto, String titulo, double orcamento, int duracao, String instituicao, Date dataEnvio, AreaDeConhecimento idArea) {
         this.idProjeto = idProjeto;
         this.titulo = titulo;
         this.orcamento = orcamento;
@@ -38,7 +37,7 @@ public class Projeto {
         this.dataEnvio = dataEnvio;
         dataResposta = null;
         resultado = "Aguardando Analise";
-        this.areaDePesquisa = areaDePesquisa;
+        this.idArea = idArea;
     }
 
     public int getIdProjeto() {
@@ -73,9 +72,10 @@ public class Projeto {
         return resultado;
     }
 
-    public AreaDePesquisa getAreaDePesquisa() {
-        return areaDePesquisa;
+    public AreaDeConhecimento getAreaDeConhecimento() {
+        return idArea;
     }
+   
 
     public void setIdProjeto(int idProjeto) {
         this.idProjeto = idProjeto;
@@ -109,13 +109,13 @@ public class Projeto {
         this.dataResposta = dataResposta;
     }
 
-    public void setAreaDePesquisa(AreaDePesquisa areaDePesquisa) {
-        this.areaDePesquisa = areaDePesquisa;
+    public void setAreaDeConhecimento(AreaDeConhecimento idArea) {
+        this.idArea = idArea;
     }
 
     public void incluir(Connection conn) {
         String sqlInsert
-                = "INSERT INTO projeto (idProjeto, titulo, orcamento, duracao, instituicao, area_de_pesquisa, data_envio, resutado) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+                = "INSERT INTO projeto (idProjeto, titulo, orcamento, duracao, instituicao, idArea, data_envio, resutado) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement stm = null;
         try {
             stm = conn.prepareStatement(sqlInsert);
@@ -124,7 +124,7 @@ public class Projeto {
             stm.setDouble(3, getOrcamento());
             stm.setInt(4, getDuracao());
             stm.setString(5, getInstituicao());
-            stm.setString(6, getAreaDePesquisa());
+            stm.setInt(6, getIdArea());
             stm.setDate(7, getDataEnvio());
             stm.setString(8, getResultado());
             stm.execute();
@@ -157,7 +157,7 @@ public class Projeto {
 
     public void atualizar(Connection conn) {
         String sqlUpdate
-                = "UPDATE projeto SET titulo = ?, orcamento = ?, duracao = ?, instituicao = ?, area_de_pesquisa = ?, data_envio= ?, resultado = ? WHERE IdProjeto = ?";
+                = "UPDATE projeto SET titulo = ?, orcamento = ?, duracao = ?, instituicao = ?, area_de_conhecimento = ?, data_envio= ?, resultado = ? WHERE IdProjeto = ?";
         PreparedStatement stm = null;
         try {
             stm.setInt(1, getIdProjeto());
@@ -165,7 +165,7 @@ public class Projeto {
             stm.setDouble(3, getOrcamento());
             stm.setInt(4, getDuracao());
             stm.setString(5, getInstituicao());
-            stm.setString(6, getAreaDePesquisa());
+            stm.setInt(6, getIdArea());
             stm.setDate(7, getDataEnvio());
             stm.setString(8, getResultado());
             stm.execute();
@@ -200,6 +200,10 @@ public class Projeto {
             }
         }
 
+    }
+
+    private int getIdArea() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

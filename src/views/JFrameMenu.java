@@ -96,7 +96,8 @@ public class JFrameMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_cadastroProjetoBtnActionPerformed
 
     private void cadastroPessoaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastroPessoaBtnActionPerformed
-        // TODO add your handling code here:
+        JFramePessoa jfp = new JFramePessoa();
+        jfp.setVisible(true);
     }//GEN-LAST:event_cadastroPessoaBtnActionPerformed
 
     /**
